@@ -1,0 +1,387 @@
+Colecciones en Java
+
+● Son estructuras para guardar una serie de elementos
+● Se acceden por medio de algún tipo de clave numérica o de otro tipo
+● Pueden estar ordenados o no
+● Suelen ser de ajuste dinámico del tamaño
+
+¿Que es un array nativo?
+
+● Un array es una estructura que almacena una lista de valores del mismo tipo en
+posiciones contiguas de memoria, accesibles mediante índices.
+● Declaración: double[] data;
+● Creación: data = new double[10]; (Esto crea un array de 10 elementos de tipo
+doble.)
+● Declaración y Creación Juntas: double[] data = new double[10];
+● Inicialización Directa: int[] primos = {2, 3, 5, 7};
+
+Acceso a Elementos de un Array
+
+● Índices: Comienzan en 0. El primer elemento está en el 0 y el último en array.length
+- 1.
+● Acceso a Elementos: Se puede acceder a cualquier elemento del array usando su
+índice.
+● data[4] = 35; (Asigna el valor 35 al elemento en la posición 4 del array.)
+● La longitud de un array se obtiene usando la propiedad .length.
+
+Errores comunes con arrays
+
+
+● Índices Fuera de Rango
+● Arrays No Inicializados
+
+Ciclo for para Recorrer Arrays
+
+Ciclo for tradicional: usando .length
+Ciclo for Mejorado (for-each): Permite recorrer todos los elementos del array sin
+necesidad de usar un índice explícito.
+Algunos Métodos: Arrays.toString(), sort(), equals(), fill(), copyOf(), binarySearch()
+
+Clase ArrayList
+
+Proporciona un conjunto de interfaces y clases diseñadas para almacenar y manipular
+grupos de datos como una sola unidad.
+
+Declaración: ArrayList nombreArray = new ArrayList();
+Metodos: size(), add(), get(), remove(), clear(), set(), contains(), indexOf()
+Se puede recorrer con un for, for each o iterator
+
+ejemplo iterator: Iterator<String> it = lista.iterator();
+while (it.hasNext()) {
+System.out.println(it.next());
+}
+
+Copiar ArrayList:
+ArrayList<Integer> ventas1 = ventas; (No copia el array, solo crea una referencia que
+lleva al mismo array original)
+
+Referencia del ArrayList original al constructor del nuevo:
+ArrayList<Integer> ventas1 = new ArrayList(ventas);
+
+¿Qué son las excepciones?
+
+● Definición: Una excepción es un evento inesperado que ocurre durante la ejecución
+del programa, interrumpiendo su flujo normal.
+● Se capturan y se manejan dentro del programa.
+● Cada vez que ocurre una excepción, se crea un objeto de excepción, que contiene
+detalles como el nombre y descripción del error, y el estado del programa.
+
+Causas Comunes de Excepciones
+
+● Entrada de datos inválida (ej. formato incorrecto).
+● Fallo de dispositivos o pérdida de conexión a la red.
+● Errores de código o intentar acceder a un archivo no disponible.
+
+Errores y Excepciones
+
+● Error: Condición irrecuperable (ej. falta de memoria, desbordamiento de pila). El
+programador no debe intentar manejarlo.
+●Excepción: Condición que podría ser capturada y manejada (ej. error al abrir un
+archivo).
+
+Tipos de Excepciones:
+Checked Exceptions:
+
+● Son las que derivan de Exception.
+● Obligatorio capturarlas o declararlas con throws.
+● Ejemplos: error de lectura de un archivo, formato incorrecto.
+
+Unchecked Exceptions:
+
+● Derivan de RuntimeException.
+● Opcional capturarlas.
+● Ejemplos: NullPointerException, ArrayIndexOutOfBoundsException.
+
+Crear y Manejar Excepciones
+
+Las excepciones son clases que heredan de Exception o RuntimeException.
+Bloque try-catch: Permite capturar y manejar excepciones.
+try: Se coloca el código que puede generar una excepción.
+catch: Captura la excepción generada en el bloque try.
+finally: Se ejecuta siempre, se haya producido o no la excepción. Ideal para liberar recursos
+(ej. cerrar archivos).
+
+Sentencia throws
+Si un método puede generar una excepción y no la maneja, debe declararla con throws en
+su firma.
+
+Ejemplo:
+public void miMetodo() throws IOException {
+// Código que puede generar una IOException
+}
+
+Archivos (Files)
+
+● Un archivo es una colección de registros relacionados y organizados para un
+propósito específico.
+● Internamente, un archivo es una secuencia de bytes almacenada en dispositivos,
+donde cada byte equivale a 8 bits.
+● Los directorios (carpetas) también se consideran archivos, funcionando como ramas
+en una estructura de árbol.
+
+Elementos característicos de los archivos
+
+● Nombre: necesario para su identificación.
+● Fecha de creación y última modificación.
+● Tamaño: medida en bytes.
+● Permisos de acceso: lectura, escritura, y ejecución.
+
+Tipos de contenido en archivos
+
+● Texto: Información legible por humanos, codificada generalmente en ASCII (cada
+byte representa un carácter).
+● No texto (binario): Información que no se interpreta directamente como texto, como
+imágenes, audio, videos, y formatos propietarios.
+
+Manipulación de archivos en programación
+● El manejo de archivos es esencial para aplicaciones, ya que la mayoría de la
+información se guarda en archivos de alguna forma.
+● Usa el concepto de streams (flujos) para manejar la comunicación entre un
+programa y el exterior (archivos, red, pantalla).
+● Un stream conecta una fuente (origen) con un destino (consumidor), permitiendo
+operaciones como lectura y escritura.
+
+Java proporciona tres flujos estándar:
+System.in: Entrada estándar (teclado).
+System.out: Salida estándar (pantalla).
+System.err: Salida de errores (pantalla).
+
+Clases y utilidades en Java para manejo de archivos
+Clases principales: File, InputStream, OutputStream.
+
+Facilitadores:
+● Scanner: Para leer datos de un archivo (usando FileReader o File).
+● PrintWriter: Para escribir datos en archivos, similar a System.out.
+Uso de propiedades (Properties):
+● Archivos .properties para guardar configuraciones como pares nombre=valor.
+
+Formatos de archivo específicos
+JSON (JavaScript Object Notation):
+Formato liviano y basado en texto, usado para intercambio de datos en aplicaciones web.
+Ventajas: Independiente del lenguaje, fácil de leer y escribir.
+En Java, se usa el parsing para convertir archivos JSON en objetos Java.
+Tipos Abstractos de Datos (TAD)
+Un tipo de dato es un conjunto de valores y operaciones asociadas.
+Un TAD consta de dos partes: un conjunto de datos y las operaciones que se pueden
+realizar sobre esos datos.
+
+Tipos de datos en Java:
+Primitivos: valores simples como enteros y caracteres, que no requieren librerías
+adicionales.
+
+Compuestos:
+● Array (Arreglo/Vector): colección ordenada de elementos.
+● Secuencia (Cadena): conjunto de caracteres en un orden específico.
+● Registro: conjunto de datos agrupados.
+
+Boxing y Unboxing:
+●Conversión entre tipos primitivos y sus Wrappers.
+●A partir de Java 1.5, se automatiza para mejorar la legibilidad y eficiencia del código.
+
+Abstracción en TAD:
+Se enfoca en el qué hace un TAD, no en el cómo lo hace.
+Incluye abstracción de control (flujos como if, for, while) y abstracción de datos (crear
+nuevos tipos de datos).
+Ventajas de los TAD:
+● Encapsulación: ocultan detalles internos, mostrando solo lo necesario para su uso.
+● Modularidad: permiten cambiar la implementación sin afectar el uso externo.
+●Extensibilidad: facilitan la creación y mantenimiento de software reutilizable.
+●Robustez: mejoran la detección de errores al definir claramente los tipos.
+
+Facilidades para usuarios y equipos de programación:
+Usuarios: Solo deben conocer la interfaz pública, sin preocuparse por la implementación
+interna.
+Programadores: Pueden cambiar la implementación sin alterar la interfaz pública.
+Equipos: Trabajan en paralelo mediante la definición de interfaces como contratos, lo que
+optimiza tiempos y recursos.
+
+Estructuras de Datos en Java (PILA-COLA-LISTA)
+● Ayudan a escribir programas más eficientes.
+● Permiten aprovechar formatos conocidos y probados
+● Simulan situaciones del mundo real, facilitando su aplicación en problemas
+cotidianos.
+
+Clasificación de las Estructuras de Datos:
+Memoria:
+● Estáticas: Tamaño fijo, como arreglos.
+● Dinámicas: Tamaño ajustable, como listas enlazadas.
+
+Topología:
+● Lineales: Elementos en secuencia (e.g., Arreglos, Pilas, Colas).
+● No lineales: Estructuras como árboles y grafos.
+
+1. Stack (Pila)
+Una Stack es una estructura de datos de tipo LIFO (Last In, First Out), donde el último
+elemento en entrar es el primero en salir. Se utiliza para manejar datos en orden inverso.
+¿Para qué sirve?
+● Deshacer acciones en editores de texto.
+● Llamadas a funciones en programación (pilas de ejecución).
+● Evaluación de expresiones aritméticas y manejo de paréntesis.
+
+Métodos principales en Java:
+● push(E item) - Agrega un elemento al tope de la pila.
+● pop() - Elimina y devuelve el elemento del tope de la pila.
+● peek() - Devuelve el elemento del tope sin eliminarlo.
+● isEmpty() - Verifica si la pila está vacía.
+
+2. Queue (Cola)
+Una Queue es una estructura de datos de tipo FIFO (First In, First Out), donde el primer
+elemento en entrar es el primero en salir. Se utiliza para manejar datos en orden de llegada.
+¿Para qué sirve?
+Las Queues se usan para gestionar tareas que deben procesarse en orden, como:
+● Colas de impresión.
+● Sistemas de procesamiento de datos.
+● Control de flujo en aplicaciones concurrentes.
+
+Métodos principales en Java:
+● add(E element) - Agrega un elemento al final de la cola.
+● remove() - Elimina y devuelve el primer elemento de la cola.
+● peek() - Devuelve el primer elemento sin eliminarlo.
+● size() - Devuelve el número de elementos en la cola.
+
+3. List (Listas Enlazadas)
+Estructuras dinámicas:
+● Pueden crecer y disminuir en tamaño según sea necesario.
+● Muy flexibles y útiles en distintos contextos de programación.
+
+Características de las Listas Enlazadas
+
+Colección de nodos:
+Cada nodo contiene dos partes:
+● Información: Datos que almacena.
+● Enlace: Referencia al siguiente nodo (o null si es el último).
+No requieren almacenamiento contiguo en memoria, a diferencia de los arrays.
+
+Tipos de Listas Enlazadas
+➔ Lista simplemente enlazada:
+Cada nodo tiene un enlace al siguiente nodo.
+Eficiente en recorridos en una sola dirección (hacia adelante).
+➔ Lista doblemente enlazada:
+Cada nodo tiene dos enlaces:
+Uno al nodo predecesor.
+Otro al nodo sucesor.
+Eficiente tanto en recorridos hacia adelante como hacia atrás.
+➔ Lista circular simplemente enlazada:
+El último nodo se enlaza al primero, formando un ciclo.
+Permite recorridos continuos sin fin.
+➔ Lista circular doblemente enlazada:
+Similar a la doblemente enlazada, pero con enlaces circulares en ambos extremos (inicio y
+fin).
+
+Pasos para Implementar Operaciones
+Insertar en la cabeza:
+1. Crear un nuevo nodo.
+2. Hacer que el nuevo nodo apunte al primer nodo actual.
+3. Actualizar la cabeza para que apunte al nuevo nodo.
+
+Buscar un elemento:
+1. Iniciar en el nodo cabeza.
+2. Recorrer nodo por nodo, comparando los datos.
+3. Retornar el nodo si se encuentra, o null si no.
+
+Eliminar un elemento:
+1. Buscar el nodo a eliminar y su nodo anterior.
+2. Actualizar el enlace del nodo anterior para que apunte al siguiente del nodo
+eliminado.
+3. Si el nodo eliminado es la cabeza, actualizar la cabeza.
+4. Liberar la memoria del nodo eliminado (Java lo hace automáticamente al no tener
+referencias).
+
+Ventajas de Listas Enlazadas
+● No requieren un tamaño fijo como los arrays.
+● Fáciles de modificar (añadir/eliminar elementos) sin necesidad de reorganizar la
+memoria.
+
+Desventajas de Listas Enlazadas
+● Acceso más lento a elementos en comparación con arrays (ya que requieren
+recorrido secuencial).
+● Uso adicional de memoria debido a los enlaces adicionales en cada nodo.
+
+Recursividad
+Es un enfoque en el que un método se llama a sí mismo, directa o indirectamente, para
+resolver un problema. Alternativa a los ciclos tradicionales (como for o while), usando
+módulos recursivos.
+Características clave:
+● No es una secuencia lineal de llamadas, sino que el método se llama a sí mismo.
+● Se basa en casos base (condiciones de salida) y llamadas recursivas.
+● Ofrece soluciones elegantes para ciertos problemas complejos.
+
+Consideraciones importantes:
+Condición de salida:
+● Fundamental para evitar bucles infinitos.
+● Si no se implementa una condición base, el programa podría bloquearse.
+
+Recursividad vs Iteración:
+● La Recursividad puede ser más elegante y legible, pero consume más memoria y
+tiempo debido a las llamadas en pila.
+● La Iteración (usando bucles) puede ser más eficiente en términos de uso de
+memoria y CPU.
+
+Ventajas de la recursividad:
+● Soluciones más concisas y legibles.
+● Útil para problemas naturalmente recursivos, como:
+
+División de problemas (divide y vencerás).
+Árboles y estructuras jerárquicas.
+Desventajas:
+● Mayor uso de recursos computacionales (tiempo y memoria).
+● Puede ser menos eficiente que una solución iterativa en ciertos casos.
+
+Clase ABSTRACTA
+Clase abstracta = SIEMPRE ES PADRE
+Una clase abstracta es una plantilla para otras clases que no puede ser instanciada
+directamente. Las clases hijas heredan de esta clase abstracta, y obliga a utilizar todos los
+métodos abstractos para sobre escribirlos en cada una de las clases hijas, y que la firma del
+método sea siempre la misma
+Si existen metodos abstractos, la clase tiene que ser abstracta
+Un método abstracto es aquel que no tiene implementación, para que luego pueda ser
+sobreescrito según lo que se necesite, estos métodos son parte de clases abstractas o
+interfaces
+
+Interfaces
+Es una especie de plantilla que tiene todos métodos abstractos que luego son modificados
+en las demás clases para que la firma del método sea el mismo en todas las clases donde
+se utilice la interfaz.
+Diferencias clase abstracta e interfaz:
+● Interfaz: Todos los métodos son abstractos (hasta Java 7) y, desde Java 8, puede
+tener métodos por defecto y métodos estáticos.
+● Clase abstracta: Puede contener métodos abstractos y métodos concretos,
+permitiendo definir comportamiento común.
+Diferencias con la Herencia:
+● Interfaz: Una clase puede implementar múltiples interfaces, lo que permite una
+especie de herencia múltiple.
+● Clase abstracta: Una clase solo puede extender de una única clase padre.
+Enumeraciones (enum)
+
+¿Qué es un enum?
+● Un enum es un tipo de dato especial que permite definir un conjunto fijo de valores
+constantes (nombres propios).
+● Introducido en Java 1.5, es más seguro y legible que usar constantes enteras.
+● Útil para representar estados fijos, como días de la semana, colores de semáforo,
+etc.
+
+¿Para qué sirve?
+● Facilita la legibilidad del código.
+● Evita errores al restringir los valores posibles.
+● Soporta métodos personalizados y atributos propios.
+● Ejemplo de Sintaxis:
+enum Semaforo { ROJO, AMBAR, VERDE }
+public class TestEnum {
+public static void main(String[] args) {
+Semaforo color = Semaforo.ROJO;
+switch (color) {
+case ROJO:
+System.out.println("Detenerse");
+break;
+case AMBAR:
+System.out.println("Precaución");
+break;
+case VERDE:
+System.out.println("Avanzar");
+break;
+}
+}
+}
+// Salida: Detenerse
+Este ejemplo muestra cómo definir un enum y usarlo en un switch para gestionar los
+estados de un semáforo.
